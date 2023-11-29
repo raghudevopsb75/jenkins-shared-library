@@ -26,5 +26,8 @@ def codeCheckout() {
 }
 
 def appRelease() {
-  sh 'echo OK'
+  stage('Release App Version') {
+    sh 'echo OK'
+  }
+
 }

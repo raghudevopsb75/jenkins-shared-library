@@ -1,10 +1,10 @@
 def call() {
   node('workstation') {
     common.codeCheckout()
-    common.compileCode()
+    common.compileCode(appType)
 
     if(env.TAG_NAME ==~ ".*") {
-      common.appRelease()
+      common.appRelease(appType)
     } else {
       stage('Code Quality') {
         sh 'echo OK'

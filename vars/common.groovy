@@ -25,7 +25,7 @@ def codeCheckout() {
   }
 }
 
-def appRelease() {
+def appRelease(appType) {
   stage('Release App Version') {
     if (appType == "nodejs") {
       sh 'zip -r ${component}-${TAG_NAME}.zip package.json server.js'

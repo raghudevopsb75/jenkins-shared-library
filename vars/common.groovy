@@ -3,6 +3,9 @@ def compileCode(appType) {
     if (appType == "nodejs") {
       sh 'npm install'
     }
+    if (appType == "java") {
+      sh 'mvn clean package'
+    }
   }
 }
 

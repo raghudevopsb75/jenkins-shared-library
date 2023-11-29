@@ -10,5 +10,6 @@ def compileCode(appType) {
 }
 
 def codeCheckout() {
+  git branch: 'main', url: 'https://github.com/raghudevopsb75/shipping'
   sh 'find .'
 }

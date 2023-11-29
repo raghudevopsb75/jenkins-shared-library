@@ -9,3 +9,6 @@ def compileCode(appType) {
   }
 }
 
+def codeCheckout() {
+  sh 'find .'
+}

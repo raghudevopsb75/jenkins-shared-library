@@ -26,13 +26,14 @@ def codeCheckout() {
 }
 
 def appRelease(appType) {
+  sh 'echo ${TAG_NAME} >VERSION'
   stage('Release App Version') {
     if (appType == "nodejs") {
-      sh 'zip -r ${component}-${TAG_NAME}.zip package.json server.js'
+      sh 'zip -r ${component}-${TAG_NAME}.zip package.json server.js VERSION'
     }
     if (appType == "java") {
       sh 'mv target/${component}-1.0.jar ${component}.jar'
-      sh 'zip -r ${component}-${TAG_NAME}.zip ${component}.jar'
+      sh 'zip -r ${component}-${TAG_NAME}.zip ${component}.jar VERSION'
     }
     if (appType == "python") {
       sh 'zip -r ${component}-${TAG_NAME}.zip *'

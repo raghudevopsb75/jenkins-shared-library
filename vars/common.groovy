@@ -27,7 +27,19 @@ def codeCheckout() {
 
 def appRelease() {
   stage('Release App Version') {
-    sh 'echo OK'
+    if (appType == "nodejs") {
+      sh 'zip -r ${component}-${TAG_NAME}.zip package.json server.js'
+    }
+    if (appType == "java") {
+      sh 'mv target/${component}-1.0.jar ${component}.jar'
+      sh 'zip -r ${component}-${TAG_NAME}.zip ${component}.jar'
+    }
+    if (appType == "python") {
+      sh 'zip -r ${component}-${TAG_NAME}.zip *'
+    }
+    if (appType == "nginx") {
+      sh 'zip -r ${component}-${TAG_NAME}.zip *'
+    }
+    sh 'curl -sSf -u "admin:Admin123" -X PUT -T ${component}-${TAG_NAME}.zip "http://artifactory.rdevopsb73.online:8081/artifactory/${component}/${component}-${TAG_NAME}.zip"'
   }
-
 }

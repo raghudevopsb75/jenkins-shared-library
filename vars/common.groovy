@@ -25,3 +25,6 @@ def codeCheckout() {
   }
 }
 
+def appRelease() {
+  sh 'echo OK'
+}

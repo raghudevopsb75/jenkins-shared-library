@@ -29,11 +29,11 @@ def appRelease(appType) {
   sh 'echo ${TAG_NAME} >VERSION'
   stage('Release App Version') {
     if (appType == "nodejs") {
-      sh 'zip -r ${component}-${TAG_NAME}.zip package.json server.js VERSION'
+      sh 'zip -r ${component}-${TAG_NAME}.zip *'
     }
     if (appType == "java") {
       sh 'mv target/${component}-1.0.jar ${component}.jar'
-      sh 'zip -r ${component}-${TAG_NAME}.zip ${component}.jar VERSION'
+      sh 'zip -r ${component}-${TAG_NAME}.zip ${component}.jar VERSION schema'
     }
     if (appType == "python") {
       sh 'zip -r ${component}-${TAG_NAME}.zip *'

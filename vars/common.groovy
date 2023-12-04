@@ -12,6 +12,7 @@ def compileCode(appType) {
 def codeCheckout() {
   stage('CodeCheckout') {
 
+    sh "find ."
     sh "find . | sed -e '1d' |xargs rm -rf"
     if(env.TAG_NAME ==~ ".*") {
       env.branch_name = "refs/tags/${env.TAG_NAME}"

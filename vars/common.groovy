@@ -20,7 +20,7 @@ def codeCheckout() {
     }
     print "branch_name - ${branch_name}"
     checkout scmGit(
-        branches: [[name: branch_name]],
+        branches: [[name: "${branch_name}"]],
         userRemoteConfigs: [[url: "https://github.com/raghudevopsb75/${component}"]]
     )
   }

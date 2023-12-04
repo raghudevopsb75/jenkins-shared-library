@@ -18,11 +18,12 @@ def codeCheckout() {
     } else {
       env.branch_name = "${env.BRANCH_NAME}"
     }
-    print "branch_name - ${branch_name}"
     checkout scmGit(
         branches: [[name: "${branch_name}"]],
         userRemoteConfigs: [[url: "https://github.com/raghudevopsb75/${component}"]]
     )
+    print "CheckOut Completed"
+    sh "ls -l"
   }
 }
 
